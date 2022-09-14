@@ -10,10 +10,7 @@ import com.example.memorialapp.model.Soldier
 
 class ShowFragment : Fragment() {
     private lateinit var binding: FragmentShowBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentShowBinding.inflate(inflater, container, false)
 
         binding.apply {

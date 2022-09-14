@@ -37,9 +37,20 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
             soldierAdapter.soldierList = it as MutableList<Soldier>
         }
 
+        binding.backBtn.setOnClickListener {
+            val fragment = FirstFragment()
+            parentFragmentManager
+                .beginTransaction()
+                .setCustomAnimations( R.anim.slide_in, R.anim.fade_out,  R.anim.fade_in, R.anim.slide_out)
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
         setHasOptionsMenu(true)
         return binding.root
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_menu, menu)

@@ -51,6 +51,15 @@ class AdminListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setHasOptionsMenu(true)
 
+        binding.backBtn.setOnClickListener {
+            val fragment = FirstFragment()
+            parentFragmentManager
+                .beginTransaction()
+                .setCustomAnimations( R.anim.slide_in, R.anim.fade_out,  R.anim.fade_in, R.anim.slide_out)
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
 
         return binding.root
     }

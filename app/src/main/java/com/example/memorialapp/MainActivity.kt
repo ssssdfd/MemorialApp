@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
             val fragment = FirstFragment()
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragmentContainer, fragment)
+                .setCustomAnimations( R.anim.slide_in, R.anim.fade_out,  R.anim.fade_in, R.anim.slide_out)
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
                 .commit()
         }
     }
