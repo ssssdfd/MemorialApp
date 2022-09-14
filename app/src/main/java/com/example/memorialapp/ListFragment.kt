@@ -18,7 +18,13 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentListBinding.inflate(inflater, container, false)
         soldierAdapter = SoldierAdapter(SoldierAdapter.OnClickListener{soldier ->
-            Toast.makeText(requireContext(), "Soldier:${soldier.name}", Toast.LENGTH_SHORT).show()
+            val fragment = ShowFragment.newInstance(soldier)
+            parentFragmentManager
+                .beginTransaction()
+                .setCustomAnimations( R.anim.slide_in, R.anim.fade_out,  R.anim.fade_in, R.anim.slide_out)
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
         })
         soldierViewModel = ViewModelProvider(this).get(SoldierViewModel::class.java)
 
