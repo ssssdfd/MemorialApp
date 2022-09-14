@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_layout">
+
+    <EditText
+        android:id="@+id/s_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Имя"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/s_surname"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/s_surname"
+        app:layout_constraintTop_toBottomOf="@+id/s_surname" />
+
+    <EditText
+        android:id="@+id/s_surname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Фамилия"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/s_patronomyc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Отчество"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/s_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/s_name"
+        app:layout_constraintTop_toBottomOf="@+id/s_name" />
+
+    <EditText
+        android:id="@+id/s_born"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Date of birth"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="@+id/s_patronomyc"
+        app:layout_constraintTop_toBottomOf="@+id/s_patronomyc" />
+
+    <EditText
+        android:id="@+id/s_death"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Date of death"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/s_patronomyc"
+        app:layout_constraintTop_toBottomOf="@+id/s_patronomyc" />
+
+    <EditText
+        android:id="@+id/s_content"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:enabled="true"
+        android:focusable="true"
+        android:gravity="start|top"
+        android:hint="Подробная информация"
+        android:inputType="textMultiLine|textPersonName"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/s_death"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/s_patronomyc" />
+
+    <Button
+        android:id="@+id/save_to_db_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintEnd_toStartOf="@+id/parents_button"
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintTop_toTopOf="@+id/parents_button" />
+
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="48dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/s_content" />
+
+    <Button
+        android:id="@+id/parents_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back_btn" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parents_card"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="16dp"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/m_surname"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Фамилия матери"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/f_surname"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Фамилия отца"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/m_surname"
+                app:layout_goneMarginStart="8dp" />
+
+            <EditText
+                android:id="@+id/m_name"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Имя матери"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/m_surname"
+                app:layout_constraintTop_toBottomOf="@id/m_surname" />
+
+            <EditText
+                android:id="@+id/f_name"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Имя отца"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@id/f_surname"
+                app:layout_constraintTop_toBottomOf="@id/f_surname" />
+
+            <EditText
+                android:id="@+id/m_patronomyc"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Отчество матери"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/m_name"
+                app:layout_constraintTop_toBottomOf="@+id/m_name" />
+
+            <EditText
+                android:id="@+id/f_patronomic"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Отчество отца"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/f_name"
+                app:layout_constraintTop_toBottomOf="@+id/f_name" />
+
+            <EditText
+                android:id="@+id/m_phone"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Номер матери"
+                android:inputType="phone"
+                app:layout_constraintStart_toStartOf="@+id/m_patronomyc"
+                app:layout_constraintTop_toBottomOf="@+id/m_patronomyc" />
+
+            <EditText
+                android:id="@+id/f_phone"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Номер отца"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/f_patronomic" />
+
+            <Button
+                android:id="@+id/back_parents_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="Close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/save_with_parents_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

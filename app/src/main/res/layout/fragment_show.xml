@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowFragment">
+
+
+    <TextView
+        android:id="@+id/m_patronomic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Сергеевна"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_name"
+        app:layout_constraintStart_toEndOf="@+id/m_name"
+        app:layout_constraintTop_toTopOf="@+id/m_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/f_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:text="Кузнецов"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_number" />
+
+    <TextView
+        android:id="@+id/f_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="+380987654321"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/f_surname"
+        app:layout_constraintTop_toBottomOf="@+id/f_surname" />
+
+    <TextView
+        android:id="@+id/f_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="22dp"
+        android:text="Виктор"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/f_surname"
+        app:layout_constraintStart_toEndOf="@+id/f_surname"
+        app:layout_constraintTop_toTopOf="@+id/f_surname"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/s_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Фамилия"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/s_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Имя"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/s_surname"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/s_patronomic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Отчество"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/s_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/s_born"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="10.05.2022"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_surname" />
+
+    <TextView
+        android:id="@+id/s_death"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="23.03.2022"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/s_born"
+        app:layout_constraintTop_toBottomOf="@id/s_name" />
+
+    <TextView
+        android:id="@+id/s_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="Погиб в боях за Киев в составе 228 бригады. Награждён орденом героя украины."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/s_born"
+        app:layout_constraintTop_toBottomOf="@+id/s_death" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <TextView
+        android:id="@+id/s_parents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Родственики"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/m_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Мазур"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/s_parents"
+        app:layout_constraintTop_toBottomOf="@+id/s_parents" />
+
+    <TextView
+        android:id="@+id/m_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="22dp"
+        android:text="Анна"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_surname"
+        app:layout_constraintStart_toEndOf="@+id/m_surname"
+        app:layout_constraintTop_toTopOf="@+id/m_surname"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/f_patronomic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Павлович"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/f_name"
+        app:layout_constraintStart_toEndOf="@+id/f_name"
+        app:layout_constraintTop_toTopOf="@+id/f_name"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/m_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="+3801234567890"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/m_surname"
+        app:layout_constraintTop_toBottomOf="@+id/m_surname" />
+</androidx.constraintlayout.widget.ConstraintLayout>
