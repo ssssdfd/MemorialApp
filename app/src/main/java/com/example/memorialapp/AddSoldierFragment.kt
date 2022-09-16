@@ -2,7 +2,9 @@ package com.example.memorialapp
 
 import android.animation.LayoutTransition
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,8 @@ import com.example.memorialapp.model.Father
 import com.example.memorialapp.model.Mother
 import com.example.memorialapp.model.Soldier
 import com.example.memorialapp.viewModel.SoldierViewModel
+import java.text.SimpleDateFormat
+import kotlin.time.Duration.Companion.days
 
 class AddSoldierFragment : Fragment() {
     private lateinit var soldierViewModel: SoldierViewModel
@@ -36,17 +40,7 @@ class AddSoldierFragment : Fragment() {
         }
 
         binding.parentsButton.setOnClickListener {
-            TransitionManager.beginDelayedTransition(binding.parentsCard, android.transition.Slide())
-            binding.apply {
-                mainLayout.setBackgroundResource(R.color.darken_layout)
-                sSurname.isEnabled = false
-                sName.isEnabled = false
-                sPatronomyc.isEnabled = false
-                sDeath.isEnabled = false
-                sBorn.isEnabled = false
-                parentsButton.visibility = View.GONE
-                parentsCard.visibility = View.VISIBLE
-            }
+            parentsBtnPress()
         }
 
         binding.saveWithParentsBtn.setOnClickListener {
@@ -54,28 +48,21 @@ class AddSoldierFragment : Fragment() {
         }
 
         binding.backParentsButton.setOnClickListener {
-            TransitionManager.beginDelayedTransition(binding.parentsCard, android.transition.Slide())
-            binding.apply {
-                mainLayout.setBackgroundResource(R.color.light_layout)
-                parentsCard.visibility = View.GONE
-                parentsButton.visibility = View.VISIBLE
-                sSurname.isEnabled = true
-                sName.isEnabled = true
-                sPatronomyc.isEnabled = true
-                sDeath.isEnabled = true
-                sBorn.isEnabled = true
-            }
-
+           backParentsBtnPress()
         }
 
         binding.saveToDbBtn.setOnClickListener {
             addSoldier()
         }
 
+        binding.notifyBtn.setOnClickListener {
+            createNotify()
+        }
+
         return binding.root
     }
 
-    fun addSoldier() = with(binding) {
+    private fun addSoldier() = with(binding) {
         val s_surname = sSurname.text.toString()
         val s_name = sName.text.toString()
         val s_patronomyc = sPatronomyc.text.toString()
@@ -91,7 +78,7 @@ class AddSoldierFragment : Fragment() {
         Toast.makeText(requireContext(), "Soldier added", Toast.LENGTH_SHORT).show()
     }
 
-    fun addSoldierWithParents() = with(binding) {
+   private fun addSoldierWithParents() = with(binding) {
         val s_surname = sSurname.text.toString()
         val s_name = sName.text.toString()
         val s_patronomyc = sPatronomyc.text.toString()
@@ -123,6 +110,55 @@ class AddSoldierFragment : Fragment() {
         sPatronomyc.isEnabled = true
         sDeath.isEnabled = true
         sBorn.isEnabled = true
+    }
+
+    private fun parentsBtnPress(){
+        TransitionManager.beginDelayedTransition(binding.parentsCard, android.transition.Slide())
+        binding.apply {
+            mainLayout.setBackgroundResource(R.color.darken_layout)
+            sSurname.isEnabled = false
+            sName.isEnabled = false
+            sPatronomyc.isEnabled = false
+            sDeath.isEnabled = false
+            sBorn.isEnabled = false
+            parentsButton.visibility = View.GONE
+            parentsCard.visibility = View.VISIBLE
+        }
+    }
+
+    private fun backParentsBtnPress(){
+        TransitionManager.beginDelayedTransition(binding.parentsCard, android.transition.Slide())
+        binding.apply {
+            mainLayout.setBackgroundResource(R.color.light_layout)
+            parentsCard.visibility = View.GONE
+            parentsButton.visibility = View.VISIBLE
+            sSurname.isEnabled = true
+            sName.isEnabled = true
+            sPatronomyc.isEnabled = true
+            sDeath.isEnabled = true
+            sBorn.isEnabled = true
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun createNotify(){
+        val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy'T'HH:mm:ss")
+        val date = binding.sDeath.text.toString()
+        val beginDateWithTime = date+"T07:00:00"
+        val endDateWithTime = date+"T23:00:00"
+        val beginTime = simpleDateFormat.parse(beginDateWithTime)
+        val endTime = simpleDateFormat.parse(endDateWithTime)
+        beginTime.year+=1
+        endTime.year+=1
+        //////////////////////////////////////////////////////////////////////////
+        val intent = Intent(Intent.ACTION_INSERT)
+        intent.setData(CalendarContract.Events.CONTENT_URI)
+        intent.putExtra(CalendarContract.Events.TITLE,"Прошёл год со дня смерти ${binding.sName}")
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime?.time)
+        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime?.time)
+        intent.putExtra(CalendarContract.Events.DESCRIPTION,"Описание")
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION,"Локация")
+        startActivity(intent)
     }
 
 }
