@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.text.TextUtils
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,6 @@ import com.example.memorialapp.model.Mother
 import com.example.memorialapp.model.Soldier
 import com.example.memorialapp.viewModel.SoldierViewModel
 import java.text.SimpleDateFormat
-import kotlin.time.Duration.Companion.days
 
 class AddSoldierFragment : Fragment() {
     private lateinit var soldierViewModel: SoldierViewModel
@@ -27,7 +27,7 @@ class AddSoldierFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentAddSoldierBinding.inflate(inflater, container, false)
-        soldierViewModel = ViewModelProvider(this).get(SoldierViewModel::class.java)
+        soldierViewModel = ViewModelProvider(this)[SoldierViewModel::class.java]
         binding.parentsCard.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
         binding.backBtn.setOnClickListener {
@@ -74,8 +74,12 @@ class AddSoldierFragment : Fragment() {
         val mother = Mother("-", "-", "-", 0)
         val father = Father("-", "-", "-", 0)
         val soldier = Soldier(s_surname, s_name, s_patronomyc, date_birth, date_death, content, mother, father)
-        soldierViewModel.insertSoldier(soldier)
-        Toast.makeText(requireContext(), "Soldier added", Toast.LENGTH_SHORT).show()
+        if(TextUtils.isEmpty(s_surname)||TextUtils.isEmpty(s_name)||TextUtils.isEmpty(s_patronomyc)||TextUtils.isEmpty(date_birth)||TextUtils.isEmpty(date_death)||TextUtils.isEmpty(content)){
+            Toast.makeText(requireContext(), "Please fill all fields.", Toast.LENGTH_SHORT).show()
+        }else{
+            soldierViewModel.insertSoldier(soldier)
+            Toast.makeText(requireContext(), "Soldier added", Toast.LENGTH_SHORT).show()
+        }
     }
 
    private fun addSoldierWithParents() = with(binding) {
@@ -102,7 +106,6 @@ class AddSoldierFragment : Fragment() {
         val mother = Mother(m_surname, m_name, m_patronomyc, m_phone.toInt())
         val father = Father(f_surname, f_name, f_patronomyc, f_phone.toInt())
         val soldier = Soldier(s_surname, s_name, s_patronomyc, date_birth, date_death, content, mother, father)
-
         soldierViewModel.insertSoldier(soldier)
         Toast.makeText(requireContext(), "Soldier added", Toast.LENGTH_SHORT).show()
         sSurname.isEnabled = true
